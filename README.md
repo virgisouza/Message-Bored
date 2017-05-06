@@ -23,7 +23,116 @@ Angular 1.x Exercise
 
 ## Setup the Client
 
-@todo
+1. create the `./public` directory
+1. create the `./public/index.html` html5 boilerplate code
+1. include the latest stable angular 1.x minified `angular` js source file
+1. include the latest stable angular 1.x minified `angular-router` js source file
+1. create the `./public/scripts` directory
+1. create the `./public/scripts/app.js` source file
+1. include the `./scripts/app.js` source file
+
+### Angular App Requirements
+
+#### Authorization
+
+For mvp, it's sufficient for a user to login with just a username, if the username exists, store the user's `user_id` in `localStorage`.
+
+The user can logout. On logout, delete the `user_id` value from `localStorage` and redirect the user back to the home route `/`.
+
+A user must be `loggedIn` in order to create a new `Topic` or post a new `Message` to a topic.
+
+#### Navigation
+
+There should be a navigation area (like side bar), each links to it's own route
+
+some items are visible only if the user is `loggedIn`.
+
+**If the user is not loggedIn**
+
+```
+Home
+Login
+Register
+Users
+-------------------
+Latest
+( list of all topics )
+```
+
+**If the user is loggedIn**
+
+```
+Home
+Logout
+Users
+-------------------
+Latest
+( list of all topics )
+Create New Topic
+```
+
+**Example: If the user is not loggedIn**
+
+```
+Home
+Login
+Register
+Users
+-------------------
+Latest
+Javascript
+Golang
+Elixir
+```
+
+**If the user is loggedIn**
+
+```
+Home
+Logout
+Users
+-------------------
+Latest
+Javascript
+Golang
+Elixir
+Create New Topic
+```
+
+#### Users
+
+The `/users` route will list all users.
+
+The list of all users has links to the `/users/:id` route.
+
+The `/users/:id` route will show the user's name at the top, when they joined the message board, and a list of all their message posts, sorted by `createdAt` in descending order.
+
+Each message post will show what topic the message was posted on, and the date of when the message was posted.
+
+#### Topics
+
+There is no `/topics` route.
+
+The list of all topics is listed in the Navigation area and links to the `/topics/:id` route.
+
+The `/topics/:id` route will show the topic's name at the top, when the topic was created, the name of the topic creator, and a list of all the messages posted in this topic, sorted by `createdAt` in ascending order.
+
+Each message post will show the name of the `Author` and the date of when the message was posted.
+
+#### Latest
+
+There is a `/latest` route which will list the 10 most recent messages.
+
+Each message post will show what topic the message was posted on, the date of when the message was posted, and the name of the `Author`.
+
+
+## Stretch Goals
+
+1. add supertest
+1. enable real auth
+1. add protractor tests
+1. styles
+
 
 ### Schemas
 
@@ -53,7 +162,7 @@ _**hint**: while writing your models, `db.sequelize.sync({force:true})` is helpf
 | Foreign Key | Name    | Relation         |
 | ----------- | ------  | ---------------- |
 | created_by  | Creator | belongs to Users |
-| topic_id    | Topic   | has many Topics  |
+| topic_id    | Topic   | has many Messages |
 
 #### Messages
 
@@ -67,6 +176,7 @@ _**hint**: while writing your models, `db.sequelize.sync({force:true})` is helpf
 | ----------- | ------  | ---------------- |
 | topic_id    | Topic   | belongs to Topic |
 | author_id   | Author  | belongs to Author |
+
 
 ## SQL
 
@@ -141,7 +251,3 @@ Foreign-key constraints:
 | api/messages/index.js | POST /api/messages           | create and respond with the new message                                                         |
 | api/messages/index.js | GET /api/messages/by-topic/:topic_id  | respond with all messages that belong to the topic by :topic_id  including the author's name, including the topic's name, ordered by createdAt ascending   |
 
-
-## Stretch Goals
-
-@todo
