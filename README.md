@@ -2,19 +2,17 @@
 
 Angular 1.x Exercise
 
-
 ## Setup the Server
 
-1. create a new node project using `npm`
-1. add the `express` and `body-parser` dependency
-1. add the `sequelize` `pg` and `pg-hstore` dependencies
+1. initialize a new node project using `npm`
+1. install these dependencies with the `-S` option: `express`,`body-parser`, `sequelize`, `pg`, and `pg-hstore` packages
 1. initialize a new `sequelize` project
 1. create a postgres user named `bored` with a password
 1. create a postgres database named `message_bored` owned by `bored`
-1. update `config/config.json`
+1. update the `config/config.json` created by sequelize
 1. create a 3 models, `Users`, `Topics`, and `Messages` _refer to **[schemas](#schemas)**_
 1. sync your models with postgres _refer to **[sql](#sql)**_
-1. setup an express project in `index.js`
+1. setup an express project in `./server.js`
 1. set up express static middleware configured to serve content from `./public`
 1. set up express static middleware for `body-parser`
 1. add router middleware for `/api` to use the `/api/index.js` module
@@ -27,9 +25,9 @@ Angular 1.x Exercise
 1. create the `./public/index.html` html5 boilerplate code
 1. include the latest stable angular 1.x minified `angular` js source file
 1. include the latest stable angular 1.x minified `angular-router` js source file
-1. create the `./public/scripts` directory
-1. create the `./public/scripts/app.js` source file
-1. include the `./scripts/app.js` source file
+1. create the `./public/js` directory
+1. create the `./public/js/app.js` source file
+1. include the `./js/app.js` source file via `<script>` tag in your `./public/index.html` file.
 
 ### Angular App Requirements
 
@@ -250,4 +248,3 @@ Foreign-key constraints:
 | api/messages/index.js | GET /api/messages/latest     | respond with the latest 10 messages including the name of the topic including the author's name |
 | api/messages/index.js | POST /api/messages           | create and respond with the new message                                                         |
 | api/messages/index.js | GET /api/messages/by-topic/:topic_id  | respond with all messages that belong to the topic by :topic_id  including the author's name, including the topic's name, ordered by createdAt ascending   |
-
