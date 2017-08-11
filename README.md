@@ -246,7 +246,7 @@ Foreign-key constraints:
 | api/users/index.js    | POST /api/users              | create and respond with new user                                                                |
 | api/topics/index.js   | GET /api/topics              | respond with all topics including the creator's name                                            |
 | api/topics/index.js   | POST /api/topics             | create and respond with a new topic                                                             |
-| api/topics/index.js   | PUT /api/topics/:name        | update and respond with the updated topic                                                       |
+| api/topics/index.js   | PUT /api/topics/:id          | update and respond with the updated topic                                                       |
 | api/messages/index.js | GET /api/messages/latest     | respond with the latest 10 messages including the name of the topic including the author's name |
 | api/messages/index.js | POST /api/messages           | create and respond with the new message                                                         |
 | api/messages/index.js | GET /api/messages/by-topic/:topic_id  | respond with all messages that belong to the topic by :topic_id  including the author's name, including the topic's name, ordered by createdAt ascending   |
