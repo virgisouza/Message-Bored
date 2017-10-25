@@ -8,7 +8,25 @@
 <body ng-app="myApp">
   <h1>Welcome to the Message Bored</h1>
 
+  <div>
+    <a ng-href="/">Users</a>
+    <a ng-href="/latest">Latest</a>
+  </div>
+
+  <div ng-view>
+    Loading ..
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js" type="text/javascript"></script>
+
 
   <script src="/js/myApp.js" type="text/javascript"></script>
+  <script src="/js/controllers/latest.controller.js" type="text/javascript"></script>
+  <script src="/js/controllers/messages.controller.js" type="text/javascript"></script>
+  <script src="/js/controllers/users.controller.js" type="text/javascript"></script>
+  <script src="/js/messageService.js" type="text/javascript"></script>
+  <script src="/js/userService.js" type="text/javascript"></script>
+  <script src="/js/latestService.js" type="text/javascript"></script>
 </body>
 </html>

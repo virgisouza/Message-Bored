@@ -1,4 +1,4 @@
 angular.module('myApp')
-.service('MessagesService', [function() {
+.service('messageService', [function() {
   //message service here
 }]);

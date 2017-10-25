@@ -1,17 +1,20 @@
 angular.module('myApp', ['ngRoute']);
 
 var myApp = angular.module('myApp')
-  .config(['UsersProvider', 'TopicsProvider', 'MessagesProvider', '$routeProvider', '$locationProvider', function(UsersProvider, TopicsProvider, MessagesProvider, $routeProvider, $locationProvider) {
+  .config(['$routeProvider', '$locationProvider', function( $routeProvider, $locationProvider) {
 
-    UsersProvider.setUrl('http://localhost:3000/api/users');
-    TopicsProvider.setUrl('http://localhost:3000/api/topics');
-    MessagesProvider.setUrl('http://localhost:3000/api/messages');
+    // .config(['UsersProvider', 'TopicsProvider', 'MessagesProvider', '$routeProvider', '$locationProvider', function(UsersProvider, TopicsProvider, MessagesProvider, $routeProvider, $locationProvider) {
+
+    // UsersProvider.setUrl('http://localhost:3000/api/users');
+    // TopicsProvider.setUrl('http://localhost:3000/api/topics');
+    // MessagesProvider.setUrl('http://localhost:3000/api/messages');
 
 
     $routeProvider
     .when('/', {
       templateUrl : '/views/users.html',
       controller : 'UsersController'
+      //MessagesController
     })
     .when('/latest', {
       templateUrl : '/views/latest.html',

@@ -1,4 +1,6 @@
 angular.module('myApp')
-.controller('UsersController', ['$scope', function ($scope) {
+.controller('UsersController', ['$scope', 'userService',function ($scope, userService) {
+
+
 
 }]);

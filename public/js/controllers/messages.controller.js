@@ -1,5 +1,5 @@
 angular.module('myApp')
-.controller('MessagesController', ['$scope', 'MessageService', function ($scope, MessageService) {
+.controller('MessagesController', ['$scope', 'messageService', function ($scope, messageService) {
 
   //controller here use $scope
 }]);
