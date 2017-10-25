@@ -1,12 +1,31 @@
 //jshint esversion : 6
-
 const express = require('express');
 const router = express.Router();
-const Users = require('../models/Users');
+const db = require('../models');
+
+const User = db.users;
 
 router.route('/')
 .get((req, res) => {
-  res.json('Hello World');
+  res.render('./views/users');
+})
+.post((req, res) => {
+  User.create({
+    name: req.body.name
+  })
+  .then(data => {
+    return res.json(data);
+  });
 });
+
+router.route('/:id')
+  .get((req,res) => {
+    let users = req.params.id;
+    return User.findById(users)
+  .then(data => {
+    return res.json(data);
+  });
+});
+
 
 module.exports = router;

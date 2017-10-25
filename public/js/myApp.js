@@ -8,7 +8,6 @@ var myApp = angular.module('myApp')
     MessagesProvider.setUrl('http://localhost:3000/api/messages');
 
 
-
     $routeProvider
     .when('/', {
       templateUrl : '/views/users.html',
