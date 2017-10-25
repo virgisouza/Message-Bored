@@ -1,10 +1,19 @@
 //jshint esversion : 6
-module.exports = function (sequelize, dataTypes) {
+module.exports = function (sequelize, DataTypes) {
 
-  const Topics = sequelize.define('topics',{
-    name : dataTypes.STRING
+  const topics = sequelize.define('topics',{
+    name : {type : DataTypes.STRING, unique: true}
   });
 
+  topics.associate = function (models) {
+    topics.belongsTo(models.users, {
+    onUpdate : "CASCADE",
+    foreignKey: 'created_by'
+   });
 
-  return Topics;
+  //   topics.hasMany(models.messages);
+  };
+
+
+  return topics;
 };

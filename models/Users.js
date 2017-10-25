@@ -1,10 +1,10 @@
 //jshint esversion : 6
-module.exports = function (sequelize, dataTypes) {
+module.exports = function (sequelize, DataTypes) {
 
-  const User = sequelize.define('users', {
-    name : dataTypes.STRING
+  const user = sequelize.define('users', {
+    name : {type : DataTypes.STRING, unique : true}
   });
 
 
-  return User;
+  return user;
 };
