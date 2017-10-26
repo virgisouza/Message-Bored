@@ -7,7 +7,10 @@ const User = db.users;
 
 router.route('/')
 .get((req, res) => {
-  res.render('./views/users');
+  User.findAll({ limit: 10})
+  .then(data => {
+    return res.json(data);
+  });
 })
 .post((req, res) => {
   User.create({

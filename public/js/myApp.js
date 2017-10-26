@@ -3,18 +3,18 @@ angular.module('myApp', ['ngRoute']);
 var myApp = angular.module('myApp')
   .config(['$routeProvider', '$locationProvider', function( $routeProvider, $locationProvider) {
 
-    // .config(['UsersProvider', 'TopicsProvider', 'MessagesProvider', '$routeProvider', '$locationProvider', function(UsersProvider, TopicsProvider, MessagesProvider, $routeProvider, $locationProvider) {
-
-    // UsersProvider.setUrl('http://localhost:3000/api/users');
-    // TopicsProvider.setUrl('http://localhost:3000/api/topics');
-    // MessagesProvider.setUrl('http://localhost:3000/api/messages');
-
-
     $routeProvider
-    .when('/', {
+    .when('/users', {
       templateUrl : '/views/users.html',
       controller : 'UsersController'
-      //MessagesController
+    })
+    .when('/users/:id', {
+      templateUrl : '/views/userId.html',
+      controller : 'UsersController'
+    })
+    .when('/topics/:id', {
+      templateUrl : '/views/topicsId.html',
+      controller : 'MessagesController'
     })
     .when('/latest', {
       templateUrl : '/views/latest.html',
@@ -26,6 +26,6 @@ var myApp = angular.module('myApp')
 
     $locationProvider.html5Mode(true);
   }])
-  .run('$rootScope',function($rootScope) {
-    $rootScope.test = new Date();
-  });
+  .run(['$rootScope',function($rootScope) {
+      $rootScope.test = new Date();
+    }]);

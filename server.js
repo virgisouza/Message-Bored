@@ -14,16 +14,9 @@ app.use('/api', routes);
 app.use(methodOverride('_method'));
 app.use(express.static('public'));
 
-// app.get('/', (req, res) => {
-//   res.render('./routes');
-// });
-
-// let users = require('./routes/users');
-// app.use('/users', users);
-// let topics = require('./routes/topics');
-// app.use('/topics', topics);
-// let messages = require('./routes/messages');
-// app.use('/messages', messages);
+app.get('*', (req, res) => {
+  res.sendFile('index.html', { root : path.join(__dirname, '/public')});
+});
 
 app.listen(PORT, () => {
   db.sequelize.sync({force: false});

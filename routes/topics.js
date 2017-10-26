@@ -7,7 +7,7 @@ const Topic = db.topics;
 
 router.route('/')
 .get((req, res) => {
-  res.render('./views/users');
+  // res.render('./views/users');
 })
 .post((req,res) => {
   Topic.create({
