@@ -5,20 +5,6 @@ angular.module('myApp')
 
   $scope.userService = userService;
 
-  $scope.newUser = {
-    name : '',
-    createdAt : '',
-    updatedAt: ''
-  };
-
-  $scope.oneUser = {
-    name : '',
-    createdAt : ''
-  };
-
- userService.getOneUser($routeParams.id).then(function(data) {
-    $scope.getOneUser = data;
-  });
 
   $scope.addUser = function (e) {
     userService.addUser($scope.newUser);
@@ -26,12 +12,5 @@ angular.module('myApp')
     $scope.newUser.createdAt = '';
     $scope.newUser.updatedAt = '';
   };
-
-  // $scope.getOneUser = function (e) {
-  //   console.log('getOne');
-  //   userService.getOneUser($scope.oneUser);
-  //   $scope.oneUser.name = '';
-  //   $scope.oneUser.createdAt = '';
-  // };
 
 }]);

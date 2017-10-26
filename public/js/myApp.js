@@ -10,7 +10,7 @@ var myApp = angular.module('myApp')
     })
     .when('/users/:id', {
       templateUrl : '/views/userId.html',
-      controller : 'UsersController'
+      controller : 'SingleUserController'
      })
     .when('/topics/:id', {
       templateUrl : '/views/topicsId.html',

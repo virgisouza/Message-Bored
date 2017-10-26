@@ -25,14 +25,12 @@ angular.module('myApp')
     var user = {
     name : givenUser.name
     };
-
      // created on backend
-    $http.post(url, user)
+    return $http.post(url, user)
     .then(function(response) {
-      console.log('Book created on backend');
+      self.users.push(response.data);
+      return response.data;
     });
-
-    self.users.push(user);
   };
 
   //find user by id
@@ -44,12 +42,6 @@ angular.module('myApp')
         return data.data;
 
       });
-
-      // var user = {
-      //   name : givenUser.name,
-      //   createdAt : givenUser.createdAt
-      // };
-
   };
 
 
