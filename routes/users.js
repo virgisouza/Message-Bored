@@ -12,15 +12,6 @@ router.route('/')
     return res.json(data);
   });
 });
-// .post((req, res) => {
-//   User.create({
-//     name: req.body.name,
-//     password: req.body.password
-//   })
-//   .then(data => {
-//     return res.json(data);
-//   });
-// });
 
 router.route('/:id')
   .get((req,res) => {

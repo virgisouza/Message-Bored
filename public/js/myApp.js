@@ -4,6 +4,10 @@ var myApp = angular.module('myApp')
   .config(['$routeProvider', '$locationProvider', function( $routeProvider, $locationProvider) {
 
     $routeProvider
+    .when('/', {
+      templateUrl : '/views/users.html',
+      controller : 'UsersController'
+    })
     .when('/users', {
       templateUrl : '/views/users.html',
       controller : 'UsersController'
@@ -12,8 +16,12 @@ var myApp = angular.module('myApp')
       templateUrl : '/views/userId.html',
       controller : 'SingleUserController'
      })
-    .when('/register', {
-      templateUrl : '/register.html',
+    .when('/login', {
+      templateUrl : 'login.html',
+      controller : 'UsersController'
+    })
+    .when('/logout', {
+      templateUrl: '/views/users.html',
       controller : 'UsersController'
     })
     .when('/topics/:id', {

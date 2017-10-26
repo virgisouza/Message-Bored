@@ -36,6 +36,8 @@ app.use(passport.session());
 
 passport.serializeUser((user,done) => {
   console.log('serializing');
+  console.log("LOGGIN in USER.ID: ", user.id);
+  console.log('LOGGIN in USER.USERNAME: ', user.username);
   return done(null, {
     id: user.id,
     username: user.username
@@ -46,6 +48,9 @@ passport.deserializeUser((user, done) => {
   console.log('deserializing');
   db.users.findOne({ where: {id: user.id}})
     .then(user => {
+      console.log("LOGGIN OUT: ", user);
+      console.log("LOGGIN OUT USER.ID: ", user.id);
+      console.log('LOGGIN OUT USER.USERNAME: ', user.username);
       return done(null, {
         id: user.id,
         username: user.username
@@ -76,24 +81,26 @@ passport.use(new LocalStrategy(function (username, password, done) {
 }));
 
 //routes
-app.post('/login', passport.authenticate('local', {
+app.post('/api/login', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/login'
 }));
 
-app.get('/logout', (req, res) => {
+app.get('/api/logout', (req, res) => {
   req.logout();
   res.redirect('/');
+  console.log('YOU LOGGED OUT');
 });
 
 app.post('/api/register', (req,res) => {
   bcrypt.genSalt(saltRounds, function (err, salt) {
     bcrypt.hash(req.body.password, salt, function (err, hash) {
       db.users.create({
-        name: req.body.name,
+        username: req.body.username,
         password: hash
       })
       .then((user) => {
+        console.log('YOU REGISTERED');
         res.json(user);
       })
       .catch((err) => {return res.send('Stupid username');});
@@ -108,7 +115,7 @@ function isAuthenticated(req, res, next) {
   else {res.redirect('/login.html');}
 }
 
-app.get('/secret', isAuthenticated, (req,res) => {
+app.get('/api/secret', isAuthenticated, (req,res) => {
   console.log('req.user',req.user);
   console.log('req.user.id', req.user.id);
   console.log('req.user.username',req.user.username);

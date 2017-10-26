@@ -1,8 +1,7 @@
 
-<body>
-  <form action="/login" method="POST">
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="password">
-    <input type="submit" ></input>
+  <form >
+    <input type="text" ng-model="loginUser.username" placeholder="Username">
+    <input type="password" ng-model="loginUser.password" placeholder="Password">
+
+    <button ng-click="login()">Login</button>
   </form>
-</body>

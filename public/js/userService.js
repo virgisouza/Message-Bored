@@ -1,6 +1,10 @@
 angular.module('myApp')
-.service('userService', ['$http', '$routeParams',function($http) {
-  var url = '/api/register';
+.service('userService', ['$http', function($http) {
+  var urlGet = '/api/users';
+  var urlPost = '/api/register';
+  var urlLogin = '/api/login';
+  var urlLogout = '/api/logout';
+
   var self = this;
 
   //collection of users
@@ -8,7 +12,7 @@ angular.module('myApp')
 
 
   //initialization
-  $http.get(url)
+  $http.get(urlGet)
     .then(function(response) {
       self.users = response.data;
     })
@@ -17,17 +21,19 @@ angular.module('myApp')
     });
 
   //read methods
-  this.getUsers = function() {return self.users; };
+  this.getUsers = function() {
+    return self.users;
+  };
 
   //create on frontend
   this.addUser = function (givenUser) {
     if(!givenUser) {return '404';}
     var user = {
-    name : givenUser.name,
+    username : givenUser.username,
     password : givenUser.password
     };
      // created on backend
-    return $http.post(url, user)
+    return $http.post(urlPost, user)
     .then(function(response) {
       self.users.push(response.data);
       return response.data;
@@ -36,13 +42,34 @@ angular.module('myApp')
 
   //find user by id
   this.getOneUser = function(id) {
-    // if(!givenUser) {return '404';}
-   return  $http.get(url + '/' + id)
-      .then(function (data) {
-        console.log("GET ONE USER DATA: ", data.data);
-        return data.data;
+   return  $http.get(urlGet + '/' + id)
+      .then(function (response) {
+        return response.data;
 
       });
+  };
+
+  ///login authenticate
+  this.login = function (givenUser) {
+    if(!givenUser) {return '404';}
+    var user = {
+    username : givenUser.username,
+    password : givenUser.password
+    };
+    return $http.post(urlLogin, user)
+      .then(function (response) {
+        console.log('LOGGED IN DATA:', response);
+        return response.data;
+      });
+  };
+
+  //logout
+  this.logout = function () {
+    return $http.get(urlLogout)
+    .then(function (response) {
+      console.log('RESPONSE.DATA LOG OUT: ', response.data);
+      return response.data;
+    });
   };
 
 
