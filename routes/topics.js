@@ -7,7 +7,10 @@ const Topic = db.topics;
 
 router.route('/')
 .get((req, res) => {
-  // res.render('./views/users');
+  Topic.findAll()
+  .then(data =>{
+    return res.json(data);
+  });
 })
 .post((req,res) => {
   Topic.create({

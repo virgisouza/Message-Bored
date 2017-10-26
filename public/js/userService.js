@@ -1,10 +1,11 @@
 angular.module('myApp')
-.service('userService', ['$http',function($http) {
+.service('userService', ['$http', '$routeParams',function($http) {
   var url = '/api/users';
   var self = this;
 
   //collection of users
   this.users = [];
+
 
   //initialization
   $http.get(url)
@@ -21,7 +22,6 @@ angular.module('myApp')
   //create on frontend
   this.addUser = function (givenUser) {
     if(!givenUser) {return '404';}
-
     var user = {
     name : givenUser.name
     };
@@ -35,10 +35,21 @@ angular.module('myApp')
     self.users.push(user);
   };
 
-    //update backend with new data
-    this.updateUsers = function(id, user) {
-    var updateUrl = url + '/' + id;
-    $http.put(updateUrl, user);
+  //find user by id
+  this.getOneUser = function(id) {
+    // if(!givenUser) {return '404';}
+   return  $http.get(url + '/' + id)
+      .then(function (data) {
+        console.log("GET ONE USER DATA: ", data.data);
+        return data.data;
+
+      });
+
+      // var user = {
+      //   name : givenUser.name,
+      //   createdAt : givenUser.createdAt
+      // };
+
   };
 
 

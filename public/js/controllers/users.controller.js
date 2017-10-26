@@ -1,5 +1,5 @@
 angular.module('myApp')
-.controller('UsersController', ['$scope', 'userService',function ($scope, userService) {
+.controller('UsersController', ['$scope', '$routeParams','userService',function ($scope, $routeParams, userService) {
 
   $scope.userSearch = '';
 
@@ -11,11 +11,27 @@ angular.module('myApp')
     updatedAt: ''
   };
 
+  $scope.oneUser = {
+    name : '',
+    createdAt : ''
+  };
+
+ userService.getOneUser($routeParams.id).then(function(data) {
+    $scope.getOneUser = data;
+  });
+
   $scope.addUser = function (e) {
     userService.addUser($scope.newUser);
     $scope.newUser.name = '';
     $scope.newUser.createdAt = '';
     $scope.newUser.updatedAt = '';
   };
+
+  // $scope.getOneUser = function (e) {
+  //   console.log('getOne');
+  //   userService.getOneUser($scope.oneUser);
+  //   $scope.oneUser.name = '';
+  //   $scope.oneUser.createdAt = '';
+  // };
 
 }]);
