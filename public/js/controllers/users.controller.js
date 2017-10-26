@@ -9,8 +9,8 @@ angular.module('myApp')
   $scope.addUser = function (e) {
     userService.addUser($scope.newUser);
     $scope.newUser.name = '';
-    $scope.newUser.createdAt = '';
-    $scope.newUser.updatedAt = '';
+    $scope.newUser.password = '';
+
   };
 
 }]);

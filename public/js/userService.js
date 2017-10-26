@@ -1,6 +1,6 @@
 angular.module('myApp')
 .service('userService', ['$http', '$routeParams',function($http) {
-  var url = '/api/users';
+  var url = '/api/register';
   var self = this;
 
   //collection of users
@@ -23,7 +23,8 @@ angular.module('myApp')
   this.addUser = function (givenUser) {
     if(!givenUser) {return '404';}
     var user = {
-    name : givenUser.name
+    name : givenUser.name,
+    password : givenUser.password
     };
      // created on backend
     return $http.post(url, user)

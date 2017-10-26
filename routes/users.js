@@ -11,22 +11,22 @@ router.route('/')
   .then(data => {
     return res.json(data);
   });
-})
-.post((req, res) => {
-  User.create({
-    name: req.body.name
-  })
-  .then(data => {
-    return res.json(data);
-  });
 });
+// .post((req, res) => {
+//   User.create({
+//     name: req.body.name,
+//     password: req.body.password
+//   })
+//   .then(data => {
+//     return res.json(data);
+//   });
+// });
 
 router.route('/:id')
   .get((req,res) => {
     let users = req.params.id;
     return User.findById(users)
   .then(data => {
-    console.log('route data: ', data);
     return res.json(data);
   });
 });

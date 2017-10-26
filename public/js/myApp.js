@@ -12,6 +12,10 @@ var myApp = angular.module('myApp')
       templateUrl : '/views/userId.html',
       controller : 'SingleUserController'
      })
+    .when('/register', {
+      templateUrl : '/register.html',
+      controller : 'UsersController'
+    })
     .when('/topics/:id', {
       templateUrl : '/views/topicsId.html',
       controller : 'MessagesController'
