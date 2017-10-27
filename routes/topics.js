@@ -31,16 +31,20 @@ router.route('/:id')
   return Topic.findById(topics)
   .then(data => {
     return res.json(data);
+    });
   })
   .put(isAuthenticated, (req, res) => {
-    Topic.update({
-      name : req.body.name
+    let data = req.body;
+    let id = req.params.id;
+    return Topic.update({
+      username : data.username
+    }, {
+      where : {id : id}
     })
     .then(data => {
       return res.json(data);
     });
   });
-});
 
 
 

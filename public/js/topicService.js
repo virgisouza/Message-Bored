@@ -38,9 +38,17 @@ angular.module('myApp')
   };
 
   //GET /:id
-  this.getOneTopic = function () {
+  this.getOneTopic = function (id) {
+   return  $http.get(urlGet + '/' + id)
+      .then(function (response) {
+        console.log('GET ONE TOPIC SERVICE', response.data);
+        return response.data;
 
+      });
   };
+
+
+
   //PUT /:id
   this.editTopic = function () {
 

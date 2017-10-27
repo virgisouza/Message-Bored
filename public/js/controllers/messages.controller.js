@@ -9,7 +9,6 @@ angular.module('myApp')
       $scope.newTopic.name = '';
       $location.url('/users');
     });
-
   };
 
 
