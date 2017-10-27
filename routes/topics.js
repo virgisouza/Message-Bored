@@ -12,9 +12,12 @@ router.route('/')
     return res.json(data);
   });
 })
-.post((req,res) => {
+.post(isAuthenticated ,(req,res) => {
+  let name = req.body.name;
+  let created_by = req.user.id;
   Topic.create({
-    name: req.body.name
+    name: name,
+    created_by: created_by
   })
   .then(data => {
     return res.json(data);
@@ -29,7 +32,7 @@ router.route('/:id')
   .then(data => {
     return res.json(data);
   })
-  .put((req, res) => {
+  .put(isAuthenticated, (req, res) => {
     Topic.update({
       name : req.body.name
     })
@@ -42,3 +45,9 @@ router.route('/:id')
 
 
 module.exports = router;
+
+//secure route for logged in users
+function isAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {next();}
+  else {res.redirect('/login.html');}
+}

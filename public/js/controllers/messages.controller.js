@@ -1,5 +1,18 @@
 angular.module('myApp')
-.controller('MessagesController', ['$scope', 'messageService', function ($scope, messageService) {
+.controller('MessagesController', ['$scope', '$location', 'messageService','topicService', function ($scope, $location, messageService, topicService) {
 
-  //controller here use $scope
+  $scope.topicService = topicService;
+
+  $scope.getTopics = topicService.getTopics;
+
+  $scope.addTopic = function (e) {
+    topicService.addTopic($scope.newTopic)
+    .then(function () {
+      $scope.newTopic.name = '';
+      $location.url('/users');
+    });
+
+  };
+
+
 }]);

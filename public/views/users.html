@@ -1,4 +1,9 @@
 <div>
+  <div>
+  <a ng-href="/login">Login</a>
+  <button ng-click="logout()">Logout</button>
+  <a ng-href="/topics">Topics</a>
+</div>
     <div>
         User Search : <input type="text" ng-model="userSearch">
     </div>
@@ -17,10 +22,11 @@
 </div>
 <br>
 <div>
-  <a ng-href="/login">Login</a><br>
-  <button ng-click="logout()">Logout</button><br>
-
+       <ul>
+      <h1>Topics</h1>
+      <li ng-repeat="topic in topicService.getTopics()">
+        <a ng-href='/topic/{{topic.id}}'>{{ topic.name }}</a>
+      </li>
+    </ul>
 </div>
-<div>
-  <button>Topics</button>
-</div>
+<br>

@@ -57,17 +57,16 @@ angular.module('myApp')
     password : givenUser.password
     };
     return $http.post(urlLogin, user)
-      .then(function (response) {
-        console.log('LOGGED IN DATA:', response);
-        return response.data;
+      .then(function (user) {
+        return user.data;
       });
   };
+
 
   //logout
   this.logout = function () {
     return $http.get(urlLogout)
     .then(function (response) {
-      console.log('RESPONSE.DATA LOG OUT: ', response.data);
       return response.data;
     });
   };
