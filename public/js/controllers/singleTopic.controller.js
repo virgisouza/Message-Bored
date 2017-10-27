@@ -5,6 +5,7 @@ angular.module('myApp')
 
  topicService.getOneTopic($routeParams.id)
  .then(function(data) {
+  console.log('SINGLE TOPIC SCOPE DATA', data);
     $scope.getOneTopic = data;
   })
  .catch(function (err) {

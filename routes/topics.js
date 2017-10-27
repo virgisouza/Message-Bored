@@ -4,10 +4,13 @@ const router = express.Router();
 const db = require('../models');
 
 const Topic = db.topics;
+const Users = db.users;
 
 router.route('/')
 .get((req, res) => {
-  Topic.findAll()
+  Topic.findAll({
+    include: [{ model: Users}]
+  })
   .then(data =>{
     return res.json(data);
   });
@@ -18,6 +21,9 @@ router.route('/')
   Topic.create({
     name: name,
     created_by: created_by
+  })
+  .then(newTopic => {
+    return newTopic.reload({ include: [{model: Users}]});
   })
   .then(data => {
     return res.json(data);

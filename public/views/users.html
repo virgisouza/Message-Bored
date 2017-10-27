@@ -21,6 +21,7 @@
        <ul>
       <li ng-repeat="topics in topicService.getTopics()">
         <a ng-href='/topics/{{topics.id}}'>{{ topics.name }}</a>
+        <p style="font-size: 12px;"> Author: {{ topics.user.username }}</p>
       </li>
     </ul>
 </div>

@@ -19,6 +19,7 @@ angular.module('myApp')
 
   //read method to get All topics
   this.getTopics = function () {
+    console.log(self.topics);
     return self.topics;
   };
 
