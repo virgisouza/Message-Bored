@@ -3,8 +3,6 @@ angular.module('myApp')
 
   $scope.topicService = topicService;
 
-  $scope.getTopics = topicService.getTopics;
-
   $scope.addTopic = function (e) {
     topicService.addTopic($scope.newTopic)
     .then(function () {

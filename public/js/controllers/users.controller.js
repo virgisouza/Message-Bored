@@ -1,9 +1,12 @@
 angular.module('myApp')
-.controller('UsersController', ['$scope', '$location','userService',function ($scope, $location, userService) {
+.controller('UsersController', ['$scope', '$location','userService', 'topicService', function ($scope, $location, userService, topicService) {
 
   $scope.userSearch = '';
 
   $scope.userService = userService;
+
+  $scope.getTopics = topicService.getTopics;
+  console.log('topicService.getTopics',topicService.getTopics);
 
 
   $scope.addUser = function (e) {

@@ -11,7 +11,7 @@ angular.module('myApp')
   //initialization get request for topic data
   $http.get(urlGet)
   .then(function (response) {
-    console.log('GET TOPIC');
+    console.log('GET TOPIC', response.data);
     self.topics = response.data;
   })
   .catch(function (err) {
@@ -20,7 +20,7 @@ angular.module('myApp')
 
   //read method to get All topics
   this.getTopics = function () {
-    console.log('GET TOPICS');
+    console.log('GET TOPICS SELF.TOPICS', self.topics);
     return self.topics;
   };
 
