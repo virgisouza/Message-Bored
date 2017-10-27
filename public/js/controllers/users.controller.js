@@ -5,8 +5,7 @@ angular.module('myApp')
 
   $scope.userService = userService;
 
-  $scope.getTopics = topicService.getTopics;
-  console.log('topicService.getTopics',topicService.getTopics);
+  $scope.topicService = topicService;
 
 
   $scope.addUser = function (e) {
