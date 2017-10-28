@@ -2,6 +2,7 @@ angular.module('myApp')
 .service('messageService', ['$http', function ($http) {
   var url = '/api/messages';
   var urlGet = '/api/messages/latest';
+  var urlTopic = '/api/topic';
   var self = this;
 
   self.messages = [];
@@ -38,9 +39,15 @@ angular.module('myApp')
       });
   };
 
-  this.getMessageByTopic = function (topicId) {
+    /// /api/topics/:id/messages
+  // this.getMessageByTopic = function (id) {
+  //   return  $http.get(urlTopic + '/' + id + '/messages')
+  //     .then(function (response) {
+  //       console.log('GET ONE TOPIC WITH MESSAGES SERVICE', response.data);
+  //       return response.data;
 
-  };
+  //     });
+  // };
 
 
 

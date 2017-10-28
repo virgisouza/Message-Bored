@@ -17,13 +17,26 @@ angular.module('myApp')
  });
 }
 
+  if($routeParams.id) {
+    topicService.getMessageByTopic($routeParams.id)
+    .then( function (data) {
+      $scope.getMessageByTopic = data;
+      console.log('SINGLE TOPIC CONTROLLER MESSAGES', data);
+    })
+    .catch(function (err) {
+      console.log(err);
+   });
+  }
+
  $scope.addMessage = function (e) {
   messageService.addMessage($scope.newMessage, $scope.getOneTopic.id)
   .then(function (data) {
     console.log('ADD MESSAGE DATA: ', data);
     $scope.newMessage.body = '';
-    $location.url('/messages/latest');
+    $location.url('/topic/:id/messages');
   });
 };
+
+
 
 }]);

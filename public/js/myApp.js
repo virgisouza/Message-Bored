@@ -28,12 +28,12 @@ var myApp = angular.module('myApp')
       templateUrl : '/views/topicId.html',
       controller : 'SingleTopicController'
     })
-    .when('/messages/latest', {
-      templateUrl: '/views/latest.html',
+    .when('/topics/:id/messages', {
+      templateUrl:'/views/topicIdMessages.html',
       controller: 'SingleTopicController'
     })
-    .when('/messages/by-topic/:topic_id', {
-      templateUrl:'/views/by-topic.html',
+    .when('/messages/latest', {
+      templateUrl: '/views/latest.html',
       controller: 'SingleTopicController'
     })
     .otherwise({
@@ -42,6 +42,4 @@ var myApp = angular.module('myApp')
 
     $locationProvider.html5Mode(true);
   }])
-  .run(['$rootScope',function($rootScope) {
-      $rootScope.test = new Date();
-    }]);
+  .run();

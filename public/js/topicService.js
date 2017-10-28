@@ -45,7 +45,15 @@ angular.module('myApp')
       });
   };
 
+  /// /api/topics/:id/messages
+  this.getMessageByTopic = function (id) {
+    return $http.get(url + '/' + id + '/messages')
+      .then(function (messages) {
+        console.log('GET ONE TOPIC WITH MESSAGES SERVICE', messages.data.result);
+        return messages.data.result;
 
+      });
+  };
 
   //PUT /:id
   this.editTopic = function () {

@@ -14,3 +14,13 @@
   <textarea type="text" ng-model="newMessage.body" name="message" placeholder="New Message Here" cols="30" rows="10"></textarea><br>
   <button ng-click="addMessage()">Create New Message</button>
 </form>
+
+
+<div>
+  <ul>
+      <li ng-repeat="messages in messageService.getMessageByTopic() ">
+         <p>New message body: {{ message.body }}</p>
+      </li>
+    </ul>
+
+</div>

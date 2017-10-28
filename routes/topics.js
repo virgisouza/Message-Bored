@@ -5,6 +5,7 @@ const db = require('../models');
 
 const Topic = db.topics;
 const Users = db.users;
+const Message = db.messages;
 
 router.route('/')
 .get((req, res) => {
@@ -51,6 +52,30 @@ router.route('/:id')
       return res.json(data);
     });
   });
+
+
+router.route('/:id/messages')
+.get((req, res) => {
+  let topicId = req.params.id;
+  return Message.findAll({
+    include : [{model: Users}],
+    where : { topic_id : topicId},
+    order : [["createdAt", "ASC"]]
+  })
+  .then(result => {
+    Topic.findOne({
+      where: { id: topicId }
+    })
+    .then(topic => {
+      let topicData = {
+        topic: topic,
+        result: result
+      };
+      return res.json(topicData);
+    });
+  });
+});
+
 
 
 
