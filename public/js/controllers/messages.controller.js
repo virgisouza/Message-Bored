@@ -1,7 +1,8 @@
 angular.module('myApp')
-.controller('MessagesController', ['$scope', '$location', 'messageService','topicService', function ($scope, $location, messageService, topicService) {
+.controller('MessagesController', ['$scope', '$location', '$routeParams', 'messageService','topicService', function ($scope, $location, $routeParams, messageService, topicService) {
 
   $scope.topicService = topicService;
+  $scope.messageService = messageService;
 
   $scope.addTopic = function (e) {
     topicService.addTopic($scope.newTopic)

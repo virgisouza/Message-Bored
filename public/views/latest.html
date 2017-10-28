@@ -1,1 +1,12 @@
-<div> latest test</div>
+<h3>Latest 10 Messages</h3>
+
+<div>
+  <ul>
+      <li ng-repeat="message in messageService.addMessage()">
+         <p>New message body: {{ message.body }}</p>
+      </li>
+    </ul>
+
+</div>
+
+

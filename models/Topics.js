@@ -15,7 +15,7 @@ module.exports = function (sequelize, DataTypes) {
     onDelete: 'NO ACTION'
    });
 
-  //   topics.hasMany(models.messages);
+   //topics.hasMany(models.messages);
   };
 
 

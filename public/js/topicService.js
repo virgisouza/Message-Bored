@@ -1,15 +1,13 @@
 angular.module('myApp')
 .service('topicService', ['$http', function ($http) {
-  var urlGet = '/api/topics';
-  var urlPost = '/api/topics';
-
+  var url = '/api/topics';
   var self = this;
 
   //collection of topics
   this.topics = [];
 
   //initialization get request for topic data
-  $http.get(urlGet)
+  $http.get(url)
   .then(function (response) {
     self.topics = response.data;
   })
@@ -19,7 +17,6 @@ angular.module('myApp')
 
   //read method to get All topics
   this.getTopics = function () {
-    console.log(self.topics);
     return self.topics;
   };
 
@@ -31,7 +28,7 @@ angular.module('myApp')
     };
 
     //link to backend
-    return $http.post(urlPost, topic)
+    return $http.post(url, topic)
       .then(function (response) {
         self.topics.push(response.data);
         return response.data;
@@ -40,7 +37,7 @@ angular.module('myApp')
 
   //GET /:id
   this.getOneTopic = function (id) {
-   return  $http.get(urlGet + '/' + id)
+   return  $http.get(url + '/' + id)
       .then(function (response) {
         console.log('GET ONE TOPIC SERVICE', response.data);
         return response.data;

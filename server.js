@@ -36,9 +36,8 @@ passport.deserializeUser((user, done) => {
   console.log('deserializing');
   db.users.findOne({ where: {id: user.id}})
     .then(user => {
-      //conditional when user data is NOT in db
       if (!user){
-        return done(null);
+        return done(null, {});
       }else{
         return done(null, {
         id: user.id,

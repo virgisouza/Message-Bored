@@ -13,6 +13,7 @@ router.use('/users', users);
 router.use('/messages', messages);
 router.use('/topics', topics);
 
+
 //routes
 router.post('/login', passport.authenticate('local'), function (req, res) {
   console.log('YOU LOGGED IN');

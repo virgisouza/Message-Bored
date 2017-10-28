@@ -4,20 +4,26 @@ const router = express.Router();
 const db = require('../models');
 
 const Message = db.messages;
+const Topic = db.topics;
+
+router.route('/')
+.post((req, res) => {
+  Message.create({
+    body: req.body.body,
+    author_id: req.user.id,
+    topic_id: req.body.topic_id
+  })
+  .then(data => {
+    console.log('MESSAGE POST DATA', data);
+    return res.json(data);
+  });
+});
 
 router.route('/latest')
 .get((req, res) => {
    Message.findAll({
     limit: 10,
     order: [["id", "DESC"]]
-  })
-  .then(data => {
-    return res.json(data);
-  });
-})
-.post((req, res) => {
-  Message.create({
-    body: req.body.body
   })
   .then(data => {
     return res.json(data);

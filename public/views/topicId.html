@@ -1,10 +1,16 @@
 <div>
   <ul>
     <li>
-        <p>Topic Name: {{ getOneTopic.name }}</p>
-        <p>Created At: {{ getOneTopic.createdAt }}</p>
-        <p>Created By: {{ getOneTopic.created_by}}</p>
-        <p>Author: {{ getOneTopic.username }}</p>
+        <h2>topic: {{ getOneTopic.name }}</h2>
+        <p>created at: {{ getOneTopic.createdAt}}</p>
+        <p>author: {{ topicService.getTopics().user.username }}</p><br>
       </li>
   </ul>
 </div>
+
+
+          <h3>Create New Message</h3>
+<form>
+  <textarea type="text" ng-model="newMessage.body" name="message" placeholder="New Message Here" cols="30" rows="10"></textarea><br>
+  <button ng-click="addMessage()">Create New Message</button>
+</form>
