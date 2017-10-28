@@ -1,10 +1,7 @@
 <div>
   <ul>
-    <li>
-        <h2>topic: {{ getOneTopic.name }}</h2>
+        <h2>{{ getOneTopic.name }}</h2>
         <p>created at: {{ getOneTopic.createdAt}}</p>
-        <p>author: {{ topicService.getTopics().user.username }}</p><br>
-      </li>
   </ul>
 </div>
 
@@ -15,12 +12,11 @@
   <button ng-click="addMessage()">Create New Message</button>
 </form>
 
-
 <div>
-  <ul>
-      <li ng-repeat="messages in messageService.getMessageByTopic() ">
-         <p>New message body: {{ message.body }}</p>
-      </li>
-    </ul>
+
+      <ul ng-repeat="result in getMessageByTopic ">
+        <h3>Author: {{ result.user.username }}</h3>
+         <p>{{ result.body }}</p>
+      </ul>
 
 </div>

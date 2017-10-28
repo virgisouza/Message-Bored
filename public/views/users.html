@@ -16,9 +16,15 @@
       </li>
     </ul>
 </div>
+
 <div>
       <h3>Topics</h3>
-       <ul>
+<form>
+  <input type="text" ng-model="newTopic.name" placeholder="Topic Name">
+  <button ng-click="addTopic()">Add Topic</button>
+</form>
+<br>
+    <ul>
       <li ng-repeat="topics in topicService.getTopics()">
         <a ng-href='/topics/{{topics.id}}'>{{ topics.name }}</a>
         <p style="font-size: 12px;"> Author: {{ topics.user.username }}</p>

@@ -20,17 +20,9 @@ var myApp = angular.module('myApp')
       templateUrl : 'login.html',
       controller : 'UsersController'
     })
-    .when('/topics', {
-      templateUrl : '/views/topics.html',
-      controller : 'MessagesController'
-    })
     .when('/topics/:id', {
       templateUrl : '/views/topicId.html',
       controller : 'SingleTopicController'
-    })
-    .when('/topics/:id/messages', {
-      templateUrl:'/views/topicIdMessages.html',
-      controller: 'SingleTopicController'
     })
     .when('/messages/latest', {
       templateUrl: '/views/latest.html',

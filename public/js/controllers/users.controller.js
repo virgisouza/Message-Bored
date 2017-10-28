@@ -1,5 +1,5 @@
 angular.module('myApp')
-.controller('UsersController', ['$scope', '$location','userService', 'topicService', function ($scope, $location, userService, topicService) {
+.controller('UsersController', ['$scope', '$location','userService', 'topicService', 'messageService',function ($scope, $location, userService, topicService, messageService) {
 
   $scope.userSearch = '';
 
@@ -7,6 +7,15 @@ angular.module('myApp')
 
   $scope.topicService = topicService;
 
+  $scope.messageService = messageService;
+
+  $scope.addTopic = function (e) {
+    topicService.addTopic($scope.newTopic)
+    .then(function () {
+      $scope.newTopic.name = '';
+      $location.url('/users');
+    });
+  };
 
   $scope.addUser = function (e) {
     userService.addUser($scope.newUser);
