@@ -2,7 +2,7 @@
 
 <div>
   <ul>
-      <li ng-repeat="message in messageService.addMessage()">
+      <li ng-repeat="message in messageService.getAllMessages()">
          <p>New message body: {{ message.body }}</p>
       </li>
     </ul>

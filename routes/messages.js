@@ -7,7 +7,7 @@ const Message = db.messages;
 const Topic = db.topics;
 
 router.route('/')
-.post((req, res) => {
+.post(isAuthenticated, (req, res) => {
   Message.create({
     body: req.body.body,
     author_id: req.user.id,
@@ -44,3 +44,9 @@ router.route('/by-topic/:topic_id')
 
 
 module.exports = router;
+
+//secure route for logged in users
+function isAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {next();}
+  else {res.redirect('/login.html');}
+}
