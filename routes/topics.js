@@ -34,7 +34,7 @@ router.route('/')
 router.route('/:id')
 .get((req, res) => {
   let topics = req.params.id;
-  return Topic.findById(topics)
+  return Topic.findById(parseInt(topics))
   .then(data => {
     return res.json(data);
     });

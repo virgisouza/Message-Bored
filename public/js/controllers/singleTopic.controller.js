@@ -4,6 +4,10 @@ angular.module('myApp')
  $scope.topicService = topicService;
  $scope.messageService = messageService;
 
+ console.log('routeParams', typeof $routeParams.id);
+
+
+ if($routeParams.id) {
  topicService.getOneTopic($routeParams.id)
  .then(function(data) {
     $scope.getOneTopic = data;
@@ -11,6 +15,7 @@ angular.module('myApp')
  .catch(function (err) {
   console.log(err);
  });
+}
 
  $scope.addMessage = function (e) {
   messageService.addMessage($scope.newMessage, $scope.getOneTopic.id)

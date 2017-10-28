@@ -32,6 +32,10 @@ var myApp = angular.module('myApp')
       templateUrl: '/views/latest.html',
       controller: 'SingleTopicController'
     })
+    .when('/messages/by-topic/:topic_id', {
+      templateUrl:'/views/by-topic.html',
+      controller: 'SingleTopicController'
+    })
     .otherwise({
       template : '<h1><center>404 PAGE HERE</center></h1>'
     });

@@ -17,20 +17,19 @@ angular.module('myApp')
 
   //read method to get All topics
   this.getAllMessages = function () {
-    console.log('GET ALL MESSAGES SERVICE: ', self.messages);
     return self.messages;
   };
 
     //create topic on frontend
   this.addMessage = function (newMessage, id) {
     if(!newMessage){return '404';}
+
     var message = {
       body : newMessage.body,
       topic_id: id
     };
     return $http.post(url, message)
       .then(function (response) {
-        console.log('ADD MESSAGE SERVICE:', response.data);
         self.messages.push(response.data);
         return response.data;
       })
@@ -38,6 +37,11 @@ angular.module('myApp')
         console.log(error);
       });
   };
+
+  this.getMessageByTopic = function (topicId) {
+
+  };
+
 
 
 }]);

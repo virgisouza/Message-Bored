@@ -1,0 +1,9 @@
+<h1>by topic</h1>
+<div>
+  <ul>
+      <li ng-repeat="message in messageService.getAllMessages() ">
+         <p>New message body: {{ message.body }}</p>
+      </li>
+    </ul>
+
+</div>

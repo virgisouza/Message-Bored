@@ -14,7 +14,6 @@ router.route('/')
     topic_id: req.body.topic_id
   })
   .then(data => {
-    console.log('MESSAGE POST DATA', data);
     return res.json(data);
   });
 });
