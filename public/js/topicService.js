@@ -39,7 +39,6 @@ angular.module('myApp')
   this.getOneTopic = function (id) {
    return  $http.get(url + '/' + id)
       .then(function (response) {
-        console.log('GET ONE TOPIC SERVICE', response.data);
         return response.data;
 
       });
@@ -49,7 +48,6 @@ angular.module('myApp')
   this.getMessageByTopic = function (id) {
     return $http.get(url + '/' + id + '/messages')
       .then(function (messages) {
-        console.log('GET ONE TOPIC WITH MESSAGES SERVICE', messages.data.result);
         return messages.data.result;
 
       });

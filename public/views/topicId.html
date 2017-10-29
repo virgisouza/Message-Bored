@@ -8,9 +8,15 @@
 
           <h3>Create New Message</h3>
 <form>
-  <textarea type="text" ng-model="newMessage.body" name="message" placeholder="New Message Here" cols="30" rows="10"></textarea><br>
+  <textarea type="text" ng-model="newMessage.body" name="message" placeholder="New Message Here" cols="60" rows="10"></textarea><br>
   <button ng-click="addMessage()">Create New Message</button>
 </form>
+<br>
+<div class= "newMessageLive">
+  <h3>Live Message :</h3>
+  {{newMessage.body}}
+</div>
+
 
 <div>
 

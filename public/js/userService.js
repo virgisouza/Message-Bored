@@ -44,7 +44,6 @@ angular.module('myApp')
   this.getOneUser = function(id) {
    return  $http.get(urlGet + '/' + id)
       .then(function (response) {
-        console.log('SERVICE RESPONSE', response.data);
         return response.data;
 
       });
