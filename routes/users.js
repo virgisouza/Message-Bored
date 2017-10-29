@@ -24,7 +24,6 @@ router.route('/:id')
       order : [["createdAt", "DESC"]]
     })
     .then(messages => {
-      console.log(messages, "MESSAGES");
       Topic.findAll({
       include : [{model: User}],
       where : { created_by : id},
