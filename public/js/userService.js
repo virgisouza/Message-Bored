@@ -44,6 +44,7 @@ angular.module('myApp')
   this.getOneUser = function(id) {
    return  $http.get(urlGet + '/' + id)
       .then(function (response) {
+        console.log('SERVICE RESPONSE', response.data);
         return response.data;
 
       });
@@ -58,6 +59,8 @@ angular.module('myApp')
     };
     return $http.post(urlLogin, user)
       .then(function (user) {
+        localStorage.setItem('loggedin', true);
+        localStorage.setItem('user', user.data.id);
         return user.data;
       });
   };
@@ -67,6 +70,8 @@ angular.module('myApp')
   this.logout = function () {
     return $http.get(urlLogout)
     .then(function (response) {
+      localStorage.setItem('loggedin', false);
+      localStorage.setItem('user', 0);
       return response.data;
     });
   };

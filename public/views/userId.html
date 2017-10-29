@@ -1,17 +1,19 @@
-<div>
-  <ul>
-    <li>
-        <p>{{ getOneUser.username }}</p>
-        <p>{{ getOneUser.createdAt }}</p>
-      </li>
-  </ul>
-</div>
+
+<ul>
+<h3>User: </h3>
+  <p>{{ getOneUser.user.username }}</p>
+  <p>{{ getOneUser.user.createdAt }}</p>
+ </ul>
 
 
+<h3>Topics:</h3>
+<ul ng-repeat="data in getOneUser.topic">
+  <p>{{ data.name }}</p>
+</ul>
 
-<!-- username
-created At
-list of all messages posted
-  - topic message posted on
-  - date message created At
-sorted by created at desc order -->
+<h3>Messages:</h3>
+<ul ng-repeat="data in getOneUser.messages">
+    <p>{{ data.body }}</p>
+</ul>
+
+
