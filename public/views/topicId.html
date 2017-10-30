@@ -1,12 +1,10 @@
 <div>
   <ul>
-        <h2>{{ getOneTopic.name }}</h2>
-        <p>created at: {{ getOneTopic.createdAt}}</p>
+    <h2>{{ getOneTopic.name }}</h2>
+    <p>created at: {{ getOneTopic.createdAt}}</p>
   </ul>
 </div>
-
-
-          <h3>Create New Message</h3>
+  <h3>Create New Message</h3>
 <form>
   <textarea type="text" ng-model="newMessage.body" name="message" placeholder="New Message Here" cols="60" rows="10"></textarea><br>
   <button ng-click="addMessage()">Create New Message</button>
@@ -16,13 +14,9 @@
   <h3>Live Message :</h3>
   {{newMessage.body}}
 </div>
-
-
 <div>
-
-      <ul ng-repeat="result in getMessageByTopic ">
-        <h3>Author: {{ result.user.username }}</h3>
-         <p>{{ result.body }}</p>
-      </ul>
-
+  <ul ng-repeat="result in getMessageByTopic ">
+    <h3>Author: {{ result.user.username }}</h3>
+     <p>{{ result.body }}</p>
+  </ul>
 </div>

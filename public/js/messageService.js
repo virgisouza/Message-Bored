@@ -21,7 +21,7 @@ angular.module('myApp')
     return self.messages;
   };
 
-    //create topic on frontend
+  //create topic on frontend
   this.addMessage = function (newMessage, id) {
     if(!newMessage){return '404';}
 

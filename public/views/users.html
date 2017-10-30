@@ -1,5 +1,7 @@
- <button ng-click="logout()">Logout</button>
-  <br>
+ <div class="home">
+
+<!--  <button ng-click="logout()">Logout</button>
+  <br> -->
    <form>
       <input type="text" ng-model="newUser.username" placeholder="Username">
       <input type="text" ng-model=newUser.password placeholder="Password">
@@ -10,11 +12,9 @@
         User Search : <input type="text" ng-model="userSearch">
     </div>
     <h3>Users</h3>
-    <ul>
-      <li ng-repeat="user in userService.getUsers() | filter: userSearch | orderBy: 'username'">
+      <ul ng-repeat="user in userService.getUsers() | filter: userSearch | orderBy: 'username'">
         <a ng-href='/users/{{user.id}}'>{{ user.username }}</a>
-      </li>
-    </ul>
+      </ul>
 </div>
 
 <div>
@@ -24,11 +24,9 @@
   <button ng-click="addTopic()">Add Topic</button>
 </form>
 <br>
-    <ul>
-      <li ng-repeat="topics in topicService.getTopics()">
+      <ul ng-repeat="topics in topicService.getTopics()">
         <a ng-href='/topics/{{topics.id}}'>{{ topics.name }}</a>
         <p style="font-size: 12px;"> Author: {{ topics.user.username }}</p>
-      </li>
-    </ul>
+      </ul>
 </div>
-
+</div>

@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="/css/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
   <base href="/">
   <title>Message Bored</title>
 </head>
 <body ng-app="myApp">
 
- <div ng-controller= "ViewsController">
+ <div class="navigation" ng-controller= "ViewsController">
   <a ng-href="/users">Home</a>
   <a ng-href="/messages/latest">Latest</a>
   <a ng-href="/login" ng-if="!login()">Login</a>

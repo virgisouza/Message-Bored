@@ -1,3 +1,35 @@
+div {
+
+   font-family: 'PT Sans Narrow', sans-serif;
+
+}
+
 body {
-   background-color: pink;
+  background: url("http://mdbootstrap.com/img/Photos/Others/img%20(42).jpg")no-repeat center center;
+    background-size: cover;
+}
+
+a:link, a:visited {
+    color: white;
+    text-decoration: none;
+    cursor: auto;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.navigation {
+  text-align: center;
+  word-spacing: 30px;
+}
+
+button {
+
+}
+
+h3 {
+    background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
